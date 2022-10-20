@@ -16,37 +16,32 @@ const inputSenha = document.querySelector('[name=senha]');
 const button = document.querySelector('.button');
 
 button.addEventListener('click', () => {
-  auth()
+  const emailValue = inputEmail.value
+  const senhaValue = inputSenha.value
+
+  if (emailValue === email && senhaValue === senha) {
+    errorMessage('logado com sucesso') 
+  } else if(emailValue === "" && senhaValue === ""){ 
+    errorMessage('preencha todos os campos')
+  } else {
+    auth(emailValue, senhaValue)
+  }
 })
 
 
-const auth = () => {
-  const inputEmailValue = inputEmail.value.trim();
-  const inputSenhaValue = inputSenha.value.trim();
+const auth = (emailValue, senhaValue) => {
 
-  if (inputEmailValue === "") {
-    errorValidation('Insira seu email')
+  if (emailValue === "") {
+    errorMessage('Insira seu email')
   }
 
-  if (inputSenhaValue === "") {
-    errorValidation('Insira sua senha')
+  if (senhaValue === "") {
+    errorMessage('Insira sua senha')
   }
 
 }
 
-const errorValidation = ( message) => {
+const errorMessage = ( message) => {
   alert(message)
-  signIn()
 }
-
-
-const signIn = () => {
-  let isEmailOk = email === inputEmail.value
-  let isPasswordOk = senha === inputSenha.value
-
-  if (isEmailOk && isPasswordOk) {
-    alert('Logado com sucesso')
-  }
-}
-
 
