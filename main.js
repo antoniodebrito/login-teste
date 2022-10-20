@@ -1,7 +1,9 @@
 const admin = {
-  "admin": "admin@admin.com",
+  "admin": "exemplo@email.com",
   "senha": "123456",
-}
+  }
+
+
 
 
 localStorage.setItem("admin", JSON.stringify(admin));
@@ -11,16 +13,35 @@ const email = adminObject.admin
 const senha = adminObject.senha
 const inputEmail = document.querySelector('[name=email]');
 const inputSenha = document.querySelector('[name=senha]');
+const button = document.querySelector('.button');
 
+button.addEventListener('click', () => {
+  const emailValue = inputEmail.value
+  const senhaValue = inputSenha.value
 
-
-const auth = () => {
-  let isEmailOk = email === inputEmail.value
-  let isPasswordOk = senha === inputSenha.value
-
-  if (isEmailOk && isPasswordOk) {
-    alert('Logado com sucesso')
+  if (emailValue === email && senhaValue === senha) {
+    errorMessage('logado com sucesso') 
+  } else if(emailValue === "" && senhaValue === ""){ 
+    errorMessage('preencha todos os campos')
   } else {
-    alert("e-mail ou senha incorretos");
+    auth(emailValue, senhaValue)
   }
+})
+
+
+const auth = (emailValue, senhaValue) => {
+
+  if (emailValue === "") {
+    errorMessage('Insira seu email')
+  }
+
+  if (senhaValue === "") {
+    errorMessage('Insira sua senha')
+  }
+
 }
+
+const errorMessage = ( message) => {
+  alert(message)
+}
+

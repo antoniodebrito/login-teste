@@ -8,3 +8,7 @@ form {
   width: 500px;
   height: 500px;
 }
+
+.error {
+  border: 3px solid red;
+}
