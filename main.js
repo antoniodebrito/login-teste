@@ -1,5 +1,5 @@
 const admin = {
-  "admin": "exemplo@email.com",
+  "admin": "admin@admin.com",
   "senha": "123456",
   }
 
@@ -33,10 +33,22 @@ const auth = (emailValue, senhaValue) => {
 
   if (emailValue === "") {
     errorMessage('Insira seu email')
+    return
+  }
+
+  if (emailValue != email) {
+    errorMessage('Email incorreto')
+    return 
   }
 
   if (senhaValue === "") {
     errorMessage('Insira sua senha')
+    return
+  }
+
+  if (senhaValue != senha) {
+    errorMessage('Senha incorreta')
+    return
   }
 
 }
